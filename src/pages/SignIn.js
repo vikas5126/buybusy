@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../fireBaseInit";
 
 function SignIn(){
-    const {signIn} = useValue();
+    const {signIn, loggedIn} = useValue();
 
     const userEmail = useRef();
     const userPassword = useRef();
@@ -21,9 +21,9 @@ function SignIn(){
             password: userPassword.current.value
         }
 
-        const status = await signIn(data);
-        console.log(status);
-        status ? navigate("/") : navigate("/signIn")
+        await signIn(data);
+        // console.log(status);
+        navigate("/") 
     }
     return (
         <div>

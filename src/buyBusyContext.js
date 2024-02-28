@@ -204,6 +204,7 @@ function CustomBuyBusyProvider({children}){
     const removeFromCart = async (id) =>{
         try {
             const docRef = doc(collection(db, "cart"), id);
+            // console.log(get);
             await deleteDoc(docRef);
         }
         catch(error){
@@ -263,6 +264,7 @@ function CustomBuyBusyProvider({children}){
             cartSnapshot.forEach(async(doc)=> {
                 await deleteDoc(doc.ref);
             })
+            setTotal(0);
         }
         catch(error){
             console.log(error);
